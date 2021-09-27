@@ -1,5 +1,5 @@
 const Admin = require("../models/admin_model");
-const { requestResponse, key } = require("../utils");
+const { requestResponse } = require("../utils");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
@@ -44,22 +44,29 @@ const login = async ({ email, password }) => {
 
   const token = jwt.sign(
     {
-      guid: admin.GUID
+      email: admin.EMAIL
     },
-    key,
-    {
-      algorithm: "RS256",
-      expiresIn: "7d"
-    }
+    'PPTIK'
   );
 
   return {
     ...requestResponse.success,
     data: {
+      email: admin.EMAIL,
       token
     }
   };
 }
+
+const findAdminByEmail = async (email) => {
+  const user = await Admin.findOne(
+    {
+      EMAIL: email
+    }
+  );
+
+  return user;
+};
 
 module.exports = {
   registration,

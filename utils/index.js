@@ -1,5 +1,3 @@
-const key = process.env.SECRET
-
 const requestResponse = {
     success: {
       code: 200,
@@ -35,6 +33,5 @@ const requestResponse = {
   };
 
   module.exports = {
-    requestResponse,
-    key
+    requestResponse
   }

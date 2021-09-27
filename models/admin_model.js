@@ -7,8 +7,8 @@ const AdminSchema = new mongoose.Schema(
   },
   {
     versionKey: false,
-    collection: "admins"
+    collection: "pengguna"
   }
 );
 
-module.exports = mongoose.model("admins", AdminSchema);
+module.exports = mongoose.model("pengguna", AdminSchema);
