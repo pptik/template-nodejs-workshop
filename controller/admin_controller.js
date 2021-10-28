@@ -31,8 +31,21 @@ const login = async (req, res) => {
   res.status(response.code).json(response);
 }
 
+const getUsers = async (req, res) => {
+  try {
+    const users = await adminService.getUsers();
+
+    response = { ...users };
+  } catch (error) {
+    logger.error(error);
+    response = { ...requestResponse.server_error };
+
+  }
+  res.status(response.code).json(response);
+}
 
 module.exports = {
   login,
-  registration
+  registration,
+  getUsers
 };
