@@ -44,8 +44,21 @@ const getUsers = async (req, res) => {
   res.status(response.code).json(response);
 }
 
+const deleteUser = async (req, res) => {
+  const { id } = req.body
+  try {
+    const users = await adminService.deleteUsers({id});
+    response = { ...users };
+  } catch (error) {
+    logger.error(error);
+    response = { ...requestResponse.server_error };
+  }
+  res.status(response.code).json(response);
+}
+
 module.exports = {
   login,
+  deleteUser,
   registration,
   getUsers
 };

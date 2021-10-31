@@ -10,6 +10,11 @@ const getUsers = async () => {
   return { ...requestResponse.success, data: user };
 }
 
+const deleteUsers = async ({id}) => {
+  const user = await Admin.deleteOne({_id: id});
+  return { ...requestResponse.success };
+}
+
 const registration = async ({email, password}) => {
   const saltRounds = 12;
 
@@ -75,6 +80,7 @@ const findAdminByEmail = async (email) => {
 
 module.exports = {
   registration,
+  deleteUsers,
   getUsers,
   login
 }
