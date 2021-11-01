@@ -45,9 +45,9 @@ const getUsers = async (req, res) => {
 }
 
 const deleteUser = async (req, res) => {
-  const { id } = req.body
+  const { id } = req.params
   try {
-    const users = await adminService.deleteUsers({id});
+    const users = await adminService.deleteUsers(id);
     response = { ...users };
   } catch (error) {
     logger.error(error);

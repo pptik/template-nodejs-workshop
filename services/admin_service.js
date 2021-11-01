@@ -10,7 +10,7 @@ const getUsers = async () => {
   return { ...requestResponse.success, data: user };
 }
 
-const deleteUsers = async ({id}) => {
+const deleteUsers = async (id) => {
   const user = await Admin.deleteOne({_id: id});
   return { ...requestResponse.success };
 }
